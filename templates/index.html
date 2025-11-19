@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepfake Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔍 Deepfake Detector</h1>
+            <p class="subtitle">Upload a video to detect if it's a deepfake or authentic</p>
+        </header>
+
+        <main>
+            <div class="upload-section" id="uploadSection">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📹</div>
+                    <h2>Drop your videos here</h2>
+                    <p>or click to browse</p>
+                    <input type="file" id="videoInput" accept="video/*" hidden>
+                    <p class="file-info">Supported formats: MP4, AVI, MOV, MKV, WEBM (Max 500MB)</p>
+                </div>
+                
+                <div class="video-preview" id="videoPreview" style="display: none;">
+                    <video id="previewVideo" controls></video>
+                    <div class="video-info">
+                        <p id="fileName"></p>
+                        <button class="btn btn-primary" id="analyzeBtn">Analyze Video</button>
+                        <button class="btn btn-secondary" id="changeVideoBtn">Change Video</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="loading-section" id="loadingSection" style="display: none;">
+                <div class="spinner"></div>
+                <p>Analyzing video... This may take a moment</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <div class="result-section" id="resultSection" style="display: none;">
+                <div class="result-card" id="resultCard">
+                    <div class="result-icon" id="resultIcon"></div>
+                    <h2 id="resultTitle"></h2>
+                    <p id="resultMessage"></p>
+                    <div class="confidence-meter">
+                        <div class="confidence-label">Confidence: <span id="confidenceValue"></span>%</div>
+                        <div class="confidence-bar">
+                            <div class="confidence-fill" id="confidenceFill"></div>
+                        </div>
+                    </div>
+                    <div class="result-details" id="resultDetails"></div>
+                    <button class="btn btn-primary" id="analyzeAnotherBtn">Analyze Another Video</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Powered by AI Deepfake Detection Technology</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
